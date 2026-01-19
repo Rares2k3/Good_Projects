@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/ai")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:8080", allowCredentials = "true")
 public class ChatBotController {
     private final ChatBotService chatbotService;
 
@@ -14,8 +14,10 @@ public class ChatBotController {
 
     @PostMapping("/ask")
     public String askAI(@RequestBody String query){
-        String systemPrompt = "Esti un asistent util pentru un magazin online de electronice." +
-                "Raspunde scurt, in romana. Clientul intreaba: " + query;
+        String systemPrompt = "You're a sales assistant expert in an IT shop." +
+                "Your goal is to provide personalized recommendations for laptops and phones. " +
+                "Be brief, polite, and help the customer choose. " +
+                "The customer's question is: " + query;
         return chatbotService.getRecommandation(systemPrompt);
     }
 }

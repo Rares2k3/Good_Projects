@@ -14,8 +14,6 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        // MODIFICARE: Folosim allowedOriginPatterns in loc de allowedOrigins
-                        // Sau punem explicit porturile Frontend-ului
                         .allowedOriginPatterns("http://localhost:8080", "http://localhost:8081", "http://localhost:*" )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")

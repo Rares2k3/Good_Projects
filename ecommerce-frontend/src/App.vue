@@ -59,6 +59,9 @@
 
       </v-window>
     </v-main>
+
+    <ChatBot />
+
   </v-app>
 </template>
 
@@ -66,10 +69,10 @@
 import ProductList from './components/ProductList.vue';
 import AdminPanel from './components/AdminPanel.vue';
 import Auth from './components/Auth.vue';
-
-// --- MODIFICARE IMPORTANTA AICI ---
-// Importam fisierul nou (ShoppingCart.vue), nu pe cel vechi (Cart.vue)
 import ShoppingCart from './components/ShoppingCart.vue'; 
+
+// --- ADAUGAT: Importam ChatBot-ul ---
+import ChatBot from './components/ChatBot.vue';
 
 export default {
   name: 'App',
@@ -77,7 +80,9 @@ export default {
     ProductList,
     AdminPanel,
     Auth,
-    ShoppingCart // Declaram componenta noua
+    ShoppingCart,
+    // --- ADAUGAT: Il declaram aici ---
+    ChatBot
   },
   data() {
     return {
@@ -97,7 +102,6 @@ export default {
         this.$nextTick(() => { if (this.$refs.productList) this.$refs.productList.fetchProducts(); });
       }
       if (newTab === 'cart') {
-        // Actualizam referinta catre componenta noua
         this.$nextTick(() => { if (this.$refs.cartComponent) this.$refs.cartComponent.loadCart(); });
       }
     }
